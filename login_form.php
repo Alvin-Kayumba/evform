@@ -1,8 +1,48 @@
+<?php
+
+include 'config.php';
+
+if(isset($_POST['submit'])){
+    // Retrieve the form data
+    $flname = $_POST['fullname'];
+    // $mname = $_POST['middlename'];
+    // $lname = $_POST['surname'];
+    $uname = $_POST['username'];
+    $regno = $_POST['regnumber'];
+    $aemail = $_POST['email'];
+    $pass = md5($_POST['password']);
+    $cpass = md5($_POST['cpassword']);
+    $mnumber = $_POST['mobilenumber'];
+    $degree= $_POST['degree'];
+    $yos = $_POST['year'];
+    $gender = $_POST['gender'];
+    $certificate = $_POST['certificate'];
+
+
+    $select = "SELECT * FROM evform WHERE username = '$uname' and password = '$pass' ";
+
+    $result = mysqli_query($conn, $select);
+
+    if(mysqli_num_rows($result) > 0){
+       $row = mysqli_fetch_array($result);
+       if($row['username']==="ALVIN"){
+        header("location:return.php");
+       }
+       else{
+        header("location:applicant.php");
+       }
+    }
+
+}
+?>
+
+
+
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>Register form</title>
+	<title>Login form</title>
 	<style type="text/css">
 		@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
 
@@ -101,7 +141,7 @@
 .form-container form .form-btn
 {
 	background: #fbd0d9;
-	color: crimson;
+	color: #2f5a78;
 	text-transform: capitalize;
 	font-size: 20px;
 	cursor: pointer;
@@ -109,7 +149,7 @@
 
 .form-container form .form-btn:hover
 {
-	background: crimson;
+	background: #2f5a78;
 	color:#fff ;
 }
 .form-container form p 
@@ -138,13 +178,14 @@ body{
     padding: 0;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif; 
-    background-color: powderblue;
+    background-color: #ffffff;
     align-items: center;
     justify-content: center;
     
 }
 a{
     text-decoration: none;
+	
 }
 ul{
     list-style: none;
@@ -179,14 +220,14 @@ nav ul li a{
     color: #000000;
 }
 nav ul li a:hover{
-    background-color: #fc6f41;
+    background-color: darkblue;
     color: #fff;
-    box-shadow: 5px 10px 30px rgba(252, 59, 0, 0.397);
+    box-shadow: 5px 10px 30px rgba(4, 0, 252, 0.397);
 }
 .active{
-    background-color: #fc6f41;
+    background-color: darkblue;
     color: #fff;
-    box-shadow: 5px 10px 30px rgba(252, 59, 0, 0.397);
+    box-shadow: 5px 10px 30px rgba(4, 0, 252, 0.397);
 }
 
 .main{
@@ -233,49 +274,22 @@ nav ul li a:hover{
 			<ul class="menu">
 			<li><a href="home.html" >Home</a></li>
 			<li><a href="aboutus.html" >About Us</a></li>
-			<li><a href="form.html" class="active">Register</a></li>
+			<li><a href="form.php">Register</a></li>
+            <li><a href="login_form.php" class="active">Login</a></li>
 			
 		</ul>
 		</nav>
 	<div class="form-container">
 
-		<form action="evform.php" method="post">
-			<h3>Register now</h3>
+		<form  method="post"  enctype="multipart/form-data">
+			<h3>Login now</h3>
 
-			<input type="text" name="firstname" id="d1" required placeholder="Enter your Firstname">
-			<input type="text" name="middlename" required placeholder="Enter your Middlename">
-			<input type="text" name="surname" required placeholder="Enter your Surname">
-			<input type="text" name="regnumber" required placeholder="Enter your registration number">
-			<input type="email" name="email" required placeholder="Enter your email">
-			<input type="number" name="mobilenumber" required placeholder="Enter your phone">
-			<select id="dropbox" name="degree" >
-				<option>Enter your degree program</option>
-				<option value="CS">Computer Science</option>
-				<option value="BIT">Business IT</option>
-				<option value="TE">Telecommunication</option>
-				<option value="EET">Electronics</option>
-				<option value="CET">Computer Engineeering</option>
-			</select>
-
-			<select id="dropbox" name="yos" >
-				<option>Enter your Year of study</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-			</select>
-
-			<div class="horizontal-container">
-  <label>Gender:</label>
-  <input type="radio" name="gender" value="Male">Male
-  <input type="radio" name="gender" value="Female">Female
-</div>			
-			<input type="file" name="educationcertificate" value="certificate">
-			
-			<input type="submit" name="submit" value="register now" class="form-btn" onclick="alert('Registration succesful')">
-
-
-	</form>
-		</div>
-
+			<input type="text" name="username" id="d1" required placeholder="Enter your username">
+            <input type="password" name="password" required placeholder="Enter your password">
+            <input type="submit" name="submit" value="Login now" class="form-btn">
+            <p>don't have an account?<a href="form.php" style="color: #2e5a78;">register now</a></p>
+        </form>
+    </div>
 </body>
 </html>
+			

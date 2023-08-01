@@ -5,7 +5,7 @@ body{
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Raleway', sans-serif;	
-	background-color: powderblue;	
+	background-color: #ffffff;	
 }
 a{
 	text-decoration: none;
@@ -31,7 +31,7 @@ nav ul{
 nav ul li a{
 	height: 40px;
 	line-height: 43px;
-	margin: 3px;
+	/* margin: 0px; */
 	padding: 0 22px;
 	display: flex;
 	font-size: 0.8rem;
@@ -41,16 +41,17 @@ nav ul li a{
 	border-radius: 3px;
 	transition: 0.6s ease-in-out;
 	color: #000000;
+	margin-top: -60px;
 }
 nav ul li a:hover{
-	background-color: #fc6f41;
+	background-color: darkblue;
 	color: #fff;
-	box-shadow: 5px 10px 30px rgba(252, 59, 0, 0.397);
+	box-shadow: 5px 10px 30px rgba(4, 0, 252, 0.397);
 }
 .active{
-	background-color: #fc6f41;
-	color: #fff;
-	box-shadow: 5px 10px 30px rgba(252, 59, 0, 0.397);
+	background-color:darkblue;
+	color: #ffffff;
+	box-shadow: 5px 10px 30px rgba(4, 0, 252, 0.397);
 
 }
 .main{
@@ -58,19 +59,20 @@ nav ul li a:hover{
 	height: 100%;
 	position: fixed;
 	background-repeat: no-repeat;
-	background-size: contain;
+	background-size: auto;
 	background-image: url(graduant.jpg);
+	margin-top: 20px;
 }
 .main-heading{
 	width: 500px;
 	position: relative;
 	left: 80%;
-	top: 20%;
-	transform: translate(-80%,-20%);
+	top: -80%;
+	transform: translate(-80%,80%);
 }
 .main-heading h1{
 	font-size: 45px;
 	margin: 0px;
 	letter-spacing: 3px;
-	color: #ffff;
+	color: #2f5a78;
 }

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -101,7 +102,7 @@
 .form-container form .form-btn
 {
 	background: #fbd0d9;
-	color: crimson;
+	color: #2f5a78;
 	text-transform: capitalize;
 	font-size: 20px;
 	cursor: pointer;
@@ -109,7 +110,7 @@
 
 .form-container form .form-btn:hover
 {
-	background: crimson;
+	background: #2f5a78;
 	color:#fff ;
 }
 .form-container form p 
@@ -138,13 +139,14 @@ body{
     padding: 0;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif; 
-    background-color: powderblue;
+    background-color: #ffffff;
     align-items: center;
     justify-content: center;
     
 }
 a{
     text-decoration: none;
+	
 }
 ul{
     list-style: none;
@@ -179,14 +181,14 @@ nav ul li a{
     color: #000000;
 }
 nav ul li a:hover{
-    background-color: #fc6f41;
+    background-color: darkblue;
     color: #fff;
-    box-shadow: 5px 10px 30px rgba(252, 59, 0, 0.397);
+    box-shadow: 5px 10px 30px rgba(4, 0, 252, 0.397);
 }
 .active{
-    background-color: #fc6f41;
+    background-color: darkblue;
     color: #fff;
-    box-shadow: 5px 10px 30px rgba(252, 59, 0, 0.397);
+    box-shadow: 5px 10px 30px rgba(4, 0, 252, 0.397);
 }
 
 .main{
@@ -233,20 +235,30 @@ nav ul li a:hover{
 			<ul class="menu">
 			<li><a href="home.html" >Home</a></li>
 			<li><a href="aboutus.html" >About Us</a></li>
-			<li><a href="form.html" class="active">Register</a></li>
+			<li><a href="form.php" class="active">Register</a></li>
+			<li><a href="login_form.php" >Login</a></li>
 			
 		</ul>
 		</nav>
 	<div class="form-container">
 
-		<form action="evform.php" method="post">
+		<form action="evform.php" method="post"  enctype="multipart/form-data">
 			<h3>Register now</h3>
-
-			<input type="text" name="firstname" id="d1" required placeholder="Enter your Firstname">
-			<input type="text" name="middlename" required placeholder="Enter your Middlename">
-			<input type="text" name="surname" required placeholder="Enter your Surname">
+			<?php
+			if(isset($error)){
+				foreach($error as $error){
+					echo '<span class = "error-msg">'.$error.'</span>';
+				}
+			}
+			?>
+			<input type="text" name="fullname" id="d1" required placeholder="Enter your Fullname">
+			<!-- <input type="text" name="middlename" required placeholder="Enter your Middlename"> -->
+			<!-- <input type="text" name="surname" required placeholder="Enter your Surname"> -->
+			<input type="text" name="username" required placeholder="Enter your username">
 			<input type="text" name="regnumber" required placeholder="Enter your registration number">
 			<input type="email" name="email" required placeholder="Enter your email">
+			<input type="password" name="password" required placeholder="Enter your password">
+			<input type="password" name="cpassword" required placeholder="Confirm your password">
 			<input type="number" name="mobilenumber" required placeholder="Enter your phone">
 			<select id="dropbox" name="degree" >
 				<option>Enter your degree program</option>
@@ -269,9 +281,9 @@ nav ul li a:hover{
   <input type="radio" name="gender" value="Male">Male
   <input type="radio" name="gender" value="Female">Female
 </div>			
-			<input type="file" name="certificate" >
-			
-			<input type="submit" name="submit" value="register now" class="form-btn">
+			<input type="file" name="certificate"  >
+			<input type="submit" name="submit"  value="Register now" class="form-btn">  
+			<p>already have an account?<a href="login_form.php" style="color: #2e5a78;">login now</a></p>
 
 
 	</form>
