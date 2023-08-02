@@ -1,7 +1,10 @@
-<!DOCTYPE html>
+
+<?php
+    session_start();
+?><!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Page</title>
+    <title>Return Page</title>
     <style>
         body{
 	margin: 0;
@@ -17,11 +20,12 @@ table{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
    
 }
 .table{
     background-color: whitesmoke;
+    padding: 5px ;
 }
 th{
     color:#fff;
@@ -76,11 +80,11 @@ td{
 <body>
 <div class="container">
     <div class="content">
-        <h3>Hi, <span></span></h3>
-        <p>This is an admin page.The following are the registered data</p>
+        <h3>Hi, <span><?=$_SESSION['username'];?> </span></h3>
+        <p>Welcome,this is an admin page.The following are the registered applicants</p>
 
         <footer>
-            <a href="login_form.php" class="btn">Back</a>
+            <a href="adminpage.php" class="btn">Back</a>
             <a href="logout.php" class="btn">Logout</a>
         </footer>
     </div>
@@ -99,6 +103,8 @@ td{
     if(!$conn){
         die("Connection failed:".$conn->connection_error);
     }
+    // session_start();
+
     echo "<table border='1'>
     <tr>
         <th>NO</th>
@@ -118,6 +124,7 @@ td{
     $result = $conn->query($sql);
 
     while($row = $result->fetch_assoc()){ ?>
+
         <tr>
             <td><?=$row['ID'];?></td>
         <td><?=$row['fullname'];?></td>

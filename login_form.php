@@ -1,37 +1,43 @@
 <?php
+session_start();
 
 include 'config.php';
 
 if(isset($_POST['submit'])){
     // Retrieve the form data
-    $flname = $_POST['fullname'];
+    // $flname = $_POST['fullname'];
     // $mname = $_POST['middlename'];
     // $lname = $_POST['surname'];
     $uname = $_POST['username'];
-    $regno = $_POST['regnumber'];
-    $aemail = $_POST['email'];
+    // $regno = $_POST['regnumber'];
+    // $aemail = $_POST['email'];
     $pass = md5($_POST['password']);
-    $cpass = md5($_POST['cpassword']);
-    $mnumber = $_POST['mobilenumber'];
-    $degree= $_POST['degree'];
-    $yos = $_POST['year'];
-    $gender = $_POST['gender'];
-    $certificate = $_POST['certificate'];
+    // $cpass = md5($_POST['cpassword']);
+    // $mnumber = $_POST['mobilenumber'];
+    // $degree= $_POST['degree'];
+    // $yos = $_POST['year'];
+    // $gender = $_POST['gender'];
+    // $certificate = $_POST['certificate'];
 
+	$_SESSION['username']=$uname;
+	$_SESSION['password']=$pass;
+	
 
-    $select = "SELECT * FROM evform WHERE username = '$uname' and password = '$pass' ";
+    $select = "SELECT * FROM evform WHERE username = '$uname' and password = '$pass'" ;
 
     $result = mysqli_query($conn, $select);
 
     if(mysqli_num_rows($result) > 0){
        $row = mysqli_fetch_array($result);
-       if($row['username']==="ALVIN"){
-        header("location:return.php");
+       if($row['username']==="ALVINK"){
+        header("location:adminpage.php");
        }
        else{
         header("location:applicant.php");
        }
-    }
+    }else{
+		header("location:login_form.php?error=1"); 
+	}
 
 }
 ?>
@@ -269,6 +275,9 @@ nav ul li a:hover{
 <body>
 
 	<section class="main">
+	<header>
+			<img src="logo22.jpg">
+		</header>
 		<nav>
 			
 			<ul class="menu">
@@ -283,10 +292,22 @@ nav ul li a:hover{
 
 		<form  method="post"  enctype="multipart/form-data">
 			<h3>Login now</h3>
-
+			<?php
+			if(isset($error)){
+				foreach($error as $error){
+					echo '<span class = "error-msg">'.$error.'</span>';
+				}
+			}
+			?>
 			<input type="text" name="username" id="d1" required placeholder="Enter your username">
             <input type="password" name="password" required placeholder="Enter your password">
             <input type="submit" name="submit" value="Login now" class="form-btn">
+			<?php
+				if(isset($_GET['error']) && $_GET['error']==1){
+					echo "<p style='color:red;'>incorrect username/password</p>";
+				}
+			?>
+			
             <p>don't have an account?<a href="form.php" style="color: #2e5a78;">register now</a></p>
         </form>
     </div>

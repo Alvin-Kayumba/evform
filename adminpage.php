@@ -1,10 +1,10 @@
 <?php
- session_start();
+    session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Applicant Page</title>
+    <title>Admin Page</title>
     <style>
         body{
 	margin: 0;
@@ -80,11 +80,11 @@ td{
 <div class="container">
     <div class="content">
         <h3>Hi, <span><?=$_SESSION['username'];?></span></h3>
-        <p>Welcome,this is an Applicant page.Click to get started</p>
+        <p>Welcome,this is an admin page.Click to get started</p>
 
         <footer>
-            <a href="login_form.php" class="btn">Back</a>
-            <a href="tasks.php" class="btn">View tasks</a>
+            <!-- <a href="login_form.php" class="btn">Back</a> -->
+            <a href="return.php" class="btn">View applicants</a>
             <a href="logout.php" class="btn">Logout</a>
         </footer>
     </div>

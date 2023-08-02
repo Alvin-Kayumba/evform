@@ -230,6 +230,9 @@ nav ul li a:hover{
 <body>
 
 	<section class="main">
+	<header>
+			<img src="logo22.jpg">
+		</header>
 		<nav>
 			
 			<ul class="menu">
@@ -258,7 +261,7 @@ nav ul li a:hover{
 			<input type="text" name="regnumber" required placeholder="Enter your registration number">
 			<input type="email" name="email" required placeholder="Enter your email">
 			<input type="password" name="password" required placeholder="Enter your password">
-			<input type="password" name="cpassword" required placeholder="Confirm your password">
+			<!-- <input type="password" name="cpassword" required placeholder="Confirm your password"> -->
 			<input type="number" name="mobilenumber" required placeholder="Enter your phone">
 			<select id="dropbox" name="degree" >
 				<option>Enter your degree program</option>

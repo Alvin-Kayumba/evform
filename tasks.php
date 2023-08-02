@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Applicant Page</title>
+    <title>Tasks Page</title>
     <style>
         body{
 	margin: 0;
@@ -79,12 +79,12 @@ td{
 <body>
 <div class="container">
     <div class="content">
-        <h3>Hi, <span><?=$_SESSION['username'];?></span></h3>
-        <p>Welcome,this is an Applicant page.Click to get started</p>
+        <h3>Hi,<?=$_SESSION['username'];?></h3>
+        <p>Currently there are no any tasks, they will be updated soon</p>
 
         <footer>
-            <a href="login_form.php" class="btn">Back</a>
-            <a href="tasks.php" class="btn">View tasks</a>
+            <!-- <a href="login_form.php" class="btn">Back</a> -->
+            <!-- <a href="tasks.php" class="btn">View tasks</a> -->
             <a href="logout.php" class="btn">Logout</a>
         </footer>
     </div>
